@@ -4,8 +4,7 @@ permalink: "/about/"
 desc: Test test
 ---
 
-##About
+# About
 This is the about page
 
 [Home](/)
-

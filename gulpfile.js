@@ -146,6 +146,7 @@ function watchAll() {
             './_layouts/**/*',
             './_posts/**/*',
             './_work/**/*',
+            './*.md',
             './*.html'
         ],
         series(doJekyll, doReload)

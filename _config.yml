@@ -1,5 +1,5 @@
 ---
-title: Template
+title: YEMORAQI
 timezone: UTC
 collections:
   posts:
@@ -22,9 +22,8 @@ defaults:
     type: posts
   values:
     layout: post
-email: emailme@noureddine.biz
-description: A starting point
+email:
+description: A music project
 baseurl:
 url:
-twitter_username: noureddinemade
-github_username: noureddinemade
+twitter_username: yemoraqi

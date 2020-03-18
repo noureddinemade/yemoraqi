@@ -39,6 +39,22 @@ input, textarea, select {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility; }
 
+@font-face {
+  font-family: 'Integral';
+  font-weight: 700;
+  src: url("/assets/font/IntegralCF-Bold.woff"), url("/assets/font/IntegralCF-Bold.woff2"); }
+
+main {
+  width: 1600px;
+  max-width: 1600px; }
+  @media screen and (max-width: 1600px) {
+    main {
+      width: 100%; } }
+
+main {
+  margin-left: auto;
+  margin-right: auto; }
+
 @media screen and (max-width: 1600px) {
   .hideXL {
     display: none; } }
@@ -64,34 +80,36 @@ input, textarea, select {
     display: none; } }
 
 body {
-  padding: 50px;
+  margin: 0;
+  padding: 0;
   font-family: sans-serif;
   font-size: 22px;
   line-height: 1.2;
-  background-color: white;
-  color: black; }
+  background-color: black;
+  color: white; }
 
 main {
-  display: block; }
+  display: block;
+  padding: 0;
+  min-height: 100vh;
+  text-align: center; }
 
 header {
-  display: block; }
+  display: none; }
 
 nav {
   display: block; }
 
 footer {
-  display: block; }
+  display: none; }
 
 section {
   display: block; }
 
 h1 {
-  margin: 10px 0;
-  font-family: serif;
-  font-size: 50px;
-  font-weight: 700;
-  color: blue; }
+  font-family: "Integral", serif;
+  font-size: 22vmin;
+  font-weight: 700; }
 
 h2 {
   font-size: 40px; }

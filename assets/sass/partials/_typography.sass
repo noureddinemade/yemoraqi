@@ -1,31 +1,60 @@
 // Typography
 
-h1, h2, h3
-
 h1
+
+    position: relative
+    z-index: 1
 
     font-family: $fontHead
     font-size: $h1
     font-weight: 700
+    line-height: .5
 
-h2
+    // Pseudo
 
-    font-size: $h2
+    &:before, &:after
 
-h3
+        content: attr(data-name)
 
-    font-size: $h3
+        position: absolute
+        z-index: 2
 
-//
+        top: 0
 
-a
+        width: 100%
+        height: 100%
 
-p
+        mix-blend-mode: color-dodge
 
-ul
+    &:before
+
+        left: -66px
+
+        color: $primary
+
+        clip: rect(0, 1350px, 320px, 0)
+
+        +animation(glitchRed, 2s, linear, infinite)
+
+    &:after
+
+        left: 50px
+
+        color: $secondary
+
+        clip: rect(0, 1400px, 620px, 0)
+
+        +animation(glitchBlue, 2s, linear, infinite)
 
     // Children
 
-    li
+    span
 
-blockquote
+        position: relative
+        z-index: 1
+
+        color: white
+
+        clip: rect(0, 900px, 722px, 56px)
+
+        +animation(glitchWhite, 3s, linear, infinite)

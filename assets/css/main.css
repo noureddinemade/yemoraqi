@@ -39,6 +39,30 @@ input, textarea, select {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility; }
 
+@media screen and (max-width: 1600px) {
+  .hideXL {
+    display: none; } }
+
+@media screen and (max-width: 1440px) {
+  .hideLG {
+    display: none; } }
+
+@media screen and (max-width: 1024px) {
+  .hideMD {
+    display: none; } }
+
+@media screen and (max-width: 800px) {
+  .hideSM {
+    display: none; } }
+
+@media screen and (max-width: 640px) {
+  .hideXS {
+    display: none; } }
+
+@media screen and (max-width: 480px) {
+  .hideXXS {
+    display: none; } }
+
 body {
   padding: 50px;
   font-family: sans-serif;
@@ -47,9 +71,33 @@ body {
   background-color: white;
   color: black; }
 
+main {
+  display: block; }
+
+header {
+  display: block; }
+
+nav {
+  display: block; }
+
+footer {
+  display: block; }
+
+section {
+  display: block; }
+
 h1 {
   margin: 10px 0;
   font-family: serif;
   font-size: 50px;
   font-weight: 700;
   color: blue; }
+
+h2 {
+  font-size: 40px; }
+
+h3 {
+  font-size: 30px; }
+
+form {
+  display: block; }

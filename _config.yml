@@ -8,6 +8,9 @@ collections:
   uploads:
     title: Uploads
     output: true
+  pages:
+    title: Pages
+    output: true
 defaults:
 - scope:
     path: ''
@@ -21,7 +24,7 @@ defaults:
     layout: post
 email: emailme@noureddine.biz
 description: A starting point
-baseurl: 
-url: 
+baseurl:
+url:
 twitter_username: noureddinemade
 github_username: noureddinemade

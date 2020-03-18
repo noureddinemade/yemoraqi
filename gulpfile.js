@@ -17,13 +17,19 @@ sass.compiler = require('node-sass');
 const imgSrc        = './assets/img/**/*';
 const imgDest       = './_site/assets/img';
 
+const pdfSrc        = './assets/pdf/*.pdf';
+const pdfDest       = './_site/assets/pdf';
+
+const dataSrc       = './assets/data/*';
+const dataDest      = './_site/assets/data';
+
 const fontSrc       = './assets/font/*';
 const fontDest      = './_site/assets/font';
 
-const jsSrc         = './assets/js/*';
+const jsSrc         = './assets/js/*.js';
 const jsDest        = './_site/assets/js';
 
-const styleSrc      = './assets/sass/**/*';
+const styleSrc      = './assets/sass/**/*.sass';
 const styleDev      = './assets/css/';
 const styleDest     = './_site/assets/css';
 
@@ -31,14 +37,9 @@ const ready         = './_site/';
 
 //
 
-function doDeploy() {
-
-    return src(ready)
-        .pipe(ghPages());
-
-}
-
 function doBrowser() {
+
+    // Initiate local server
 
     browserSync.init({
         server: {
@@ -49,7 +50,18 @@ function doBrowser() {
 
 }
 
+function doDeploy() {
+
+    // Deploy to gh-Pages branch on github
+
+    return src(ready)
+        .pipe(ghPages());
+
+}
+
 function doReload(cb) {
+
+    // Refresh browser
 
     browserSync.reload();
 
@@ -57,25 +69,38 @@ function doReload(cb) {
 
 }
 
+function doData(cb) {
+
+    // Move data files to ready
+
+    return src(dataSrc)
+        .pipe(dest(dataDest))
+        .pipe(browserSync.stream());
+
+    cb();
+
+}
+
+function doPDF(cb) {
+
+    // Move PDF to ready
+
+    return src(pdfSrc)
+        .pipe(dest(pdfDest))
+        .pipe(browserSync.stream());
+
+    cb();
+
+}
+
 function doImg(cb) {
 
+    // Minify images and move to ready
+
     return src(imgSrc)
-        .pipe(
-            imagemin([
-                imagemin.gifsicle({ interlaced: true }),
-                imagemin.jpegtran({ progressive: true }),
-                imagemin.optipng({ optimizationLevel: 5 }),
-                imagemin.svgo({
-                  plugins: [
-                    {
-                      removeViewBox: false,
-                      collapseGroups: true
-                    }
-                  ]
-                })
-            ])
-        )
-        .pipe(dest(imgDest));
+        .pipe(imagemin())
+        .pipe(dest(imgDest))
+        .pipe(browserSync.stream());
 
     cb();
 
@@ -83,8 +108,11 @@ function doImg(cb) {
 
 function doFont(cb) {
 
+    // Move to ready
+
     return src(fontSrc)
-        .pipe(dest(fontDest));
+        .pipe(dest(fontDest))
+        .pipe(browserSync.stream());
 
     cb();
 
@@ -98,7 +126,8 @@ function doJS(cb) {
         .pipe(sourceMap.init())
         .pipe(terser())
         .pipe(sourceMap.write())
-        .pipe(dest(jsDest));
+        .pipe(dest(jsDest))
+        .pipe(browserSync.stream());
 
     cb();
 
@@ -133,19 +162,23 @@ function doJekyll(cb) {
 
 function watchAll() {
 
+    // Watch stuff, then do stuff
+
     doBrowser();
 
     watch(styleSrc, doCSS);
     watch(jsSrc, doJS);
+    watch(pdfSrc, doPDF);
     watch(imgSrc, doImg);
     watch(fontSrc, doFont);
+    watch(dataSrc, doData);
 
     watch(
         [
             './_includes/**/*',
             './_layouts/**/*',
             './_posts/**/*',
-            './_work/**/*',
+            './_pages/**/*',
             './*.md',
             './*.html'
         ],

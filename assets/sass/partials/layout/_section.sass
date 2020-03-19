@@ -4,20 +4,67 @@ section
 
     display: block
 
-    height: 100vh
-
-    overflow: hidden
-
     // Classes
 
     &.intro
 
-        display: flex
+        position: relative
+
+        display: grid
+        grid-template-columns: 20% auto 20%
+        grid-template-rows: 20% auto 20%
+        grid-gap: $globalSpace
+
+        height: 100vh
 
         @extend %padding
+
+        +transition(transform, 1s, 0s, ease-out)
 
         // Children
 
         *
 
             margin: auto
+
+            +transition(transform, 1s, 0s, ease-out)
+
+            // Pseudo
+
+            &:nth-child(4)
+
+                +transform(rotate, -90deg)
+
+            &:nth-child(6)
+
+                +transform(rotate, 90deg)
+
+            &:nth-child(8)
+
+                +transform(rotate, 180deg)
+
+        h1
+
+            animation-direction: reverse
+
+        div
+
+            position: relative
+
+            width: 60%
+            height: 10%
+
+            background-color: $light
+
+        svg
+
+            // Children
+
+            path
+
+                margin: auto
+
+                stroke: $light
+                stroke-width: 4px
+
+

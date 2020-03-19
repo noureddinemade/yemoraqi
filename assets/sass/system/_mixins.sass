@@ -70,7 +70,7 @@
 
 // Animation
 
-@mixin animation($anim, $speed, $easing, $loop, $delay: 0s, $fill: none)
+@mixin animation($anim, $speed, $easing, $loop, $delay: 0s, $fill: none, $direction: normal)
 
     -webkit-animation-name: $anim
     -webkit-animation-duration: $speed
@@ -78,6 +78,7 @@
     -webkit-animation-iteration-count: $loop
     -webkit-animation-delay: $delay
     -webkit-animation-fill-mode: $fill
+    -webkit-animation-direction: $direction
 
     animation-name: $anim
     animation-duration: $speed
@@ -85,6 +86,7 @@
     animation-iteration-count: $loop
     animation-delay: $delay
     animation-fill-mode: $fill
+    animation-direction: $direction
 
 // Transition
 

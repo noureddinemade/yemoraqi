@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Rakkas&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Rakkas&family=Rubik+Mono+One&display=swap");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -98,9 +98,24 @@ body {
 
 main {
   display: block;
+  position: relative;
   padding: 0;
   width: 100%;
+  height: 100%;
   text-align: center; }
+  main .bg {
+    position: absolute;
+    z-index: 1;
+    top: -50%;
+    left: -60%;
+    width: 200%;
+    height: 200%;
+    background-image: repeating-radial-gradient(circle at 50% 50%, black, black 5%, #050505, #050505 5% 10%);
+    transform-origin: 50% 50%;
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-delay: ease-in-out;
+    transition-timing-function: linear; }
 
 header {
   display: none; }
@@ -112,12 +127,13 @@ footer {
   display: none; }
 
 section {
-  display: block; }
+  position: relative;
+  display: block;
+  z-index: 3; }
   section.intro {
-    position: relative;
     display: grid;
     grid-template-columns: 20% auto 20%;
-    grid-template-rows: 20% auto 20%;
+    grid-template-rows: 22% auto 22%;
     grid-gap: 50px;
     height: 100vh;
     transition-property: transform;
@@ -131,47 +147,59 @@ section {
       transition-delay: 0s;
       transition-timing-function: ease-out; }
       section.intro *:nth-child(4) {
-        -webkit-transform: rotate(-90deg);
-        -ms-transform: rotate(-90deg);
-        transform: rotate(-90deg); }
+        -webkit-transform: rotate(-90deg) scaleX(-1);
+        -ms-transform: rotate(-90deg) scaleX(-1);
+        transform: rotate(-90deg) scaleX(-1); }
       section.intro *:nth-child(6) {
         -webkit-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
         transform: rotate(90deg); }
       section.intro *:nth-child(8) {
-        -webkit-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-        transform: rotate(180deg); }
-    section.intro h1 {
-      animation-direction: reverse; }
+        -webkit-transform: scaleY(-1);
+        -ms-transform: scaleY(-1);
+        transform: scaleY(-1); }
     section.intro div {
       position: relative;
-      width: 60%;
-      height: 10%;
-      background-color: white; }
-    section.intro svg path {
-      margin: auto;
-      stroke: white;
-      stroke-width: 4px; }
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%; }
+      section.intro div h1 {
+        margin: auto;
+        line-height: .5; }
+        section.intro div h1:nth-child(2) {
+          -webkit-transform: scaleY(-1);
+          -ms-transform: scaleY(-1);
+          transform: scaleY(-1); }
+    section.intro svg {
+      width: 80%;
+      height: 100%; }
+      section.intro svg path {
+        margin: auto;
+        fill: none;
+        stroke: white;
+        stroke-width: 4px; }
 
 h1, h2, h3 {
   position: relative;
   line-height: 1; }
 
 h2, h3 {
-  font-family: "Integral", sans-serif;
+  font-family: "Rubik Mono One", sans-serif;
   font-weight: 700; }
 
 h1 {
+  z-index: 10;
   font-size: 26vmin;
   font-family: "Rakkas", cursive;
-  font-weight: 400; }
+  font-weight: 400;
+  transition-property: transform;
+  transition-duration: 0.01s;
+  transition-delay: 0s;
+  transition-timing-function: linear; }
 
 h2 {
-  font-size: 60px;
-  -webkit-transform: translateY(-6%);
-  -ms-transform: translateY(-6%);
-  transform: translateY(-6%); }
+  font-size: 30px; }
 
 h3 {
   font-size: 60px; }
@@ -195,6 +223,28 @@ h3 {
     -webkit-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     transform: rotate(360deg); } }
+
+@keyframes nightBlur {
+  0% {
+    webkit-filter: blur(20px);
+    filter: blur(20px); }
+  50% {
+    webkit-filter: blur(50px);
+    filter: blur(50px); }
+  100% {
+    webkit-filter: blur(20px);
+    filter: blur(20px); } }
+
+@-webkit-keyframes nightBlur {
+  0% {
+    webkit-filter: blur(20px);
+    filter: blur(20px); }
+  50% {
+    webkit-filter: blur(50px);
+    filter: blur(50px); }
+  100% {
+    webkit-filter: blur(20px);
+    filter: blur(20px); } }
 
 form {
   display: block; }

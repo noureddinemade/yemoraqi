@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Rakkas&family=Rubik+Mono+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -41,9 +41,24 @@ input, textarea, select {
   text-rendering: optimizeLegibility; }
 
 @font-face {
-  font-family: 'Integral';
-  font-weight: 700;
-  src: url("/assets/font/IntegralCF-Bold.woff"), url("/assets/font/IntegralCF-Bold.woff2"); }
+  font-family: 'Chaney';
+  font-weight: normal;
+  src: url("/assets/font/chaney.woff"), url("/assets/font/chaney.woff2"); }
+
+@font-face {
+  font-family: 'ChaneyWide';
+  font-weight: normal;
+  src: url("/assets/font/chaneywide.woff"), url("/assets/font/chaneywide.woff2"); }
+
+@font-face {
+  font-family: 'ChaneyExtended';
+  font-weight: normal;
+  src: url("/assets/font/chaneyextended.woff"), url("/assets/font/chaneyextended.woff2"); }
+
+@font-face {
+  font-family: 'ChaneyUltra';
+  font-weight: normal;
+  src: url("/assets/font/chaneyultraextended.woff"), url("/assets/font/chaneyultraextended.woff2"); }
 
 section.intro {
   padding: 50px 50px; }
@@ -99,23 +114,37 @@ body {
 main {
   display: block;
   position: relative;
+  z-index: 1;
   padding: 0;
   width: 100%;
   height: 100%;
-  text-align: center; }
+  text-align: center;
+  overflow: hidden; }
+  main .bg, main .shadow {
+    position: absolute; }
+  main .shadow {
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 300px 200px black; }
   main .bg {
-    position: absolute;
-    z-index: 1;
-    top: -50%;
-    left: -60%;
+    z-index: 10;
+    top: -80%;
+    left: -70%;
     width: 200%;
     height: 200%;
-    background-image: repeating-radial-gradient(circle at 50% 50%, black, black 5%, #050505, #050505 5% 10%);
+    background-image: radial-gradient(circle at 50% 50%, transparent 0%, transparent 5%, black 30%);
+    opacity: 1;
     transform-origin: 50% 50%;
     transition-property: transform;
     transition-duration: 0.2s;
     transition-delay: ease-in-out;
-    transition-timing-function: linear; }
+    transition-timing-function: linear;
+    -webkit-transform: translate(500px);
+    -ms-transform: translate(500px);
+    transform: translate(500px); }
 
 header {
   display: none; }
@@ -146,31 +175,36 @@ section {
       transition-duration: 1s;
       transition-delay: 0s;
       transition-timing-function: ease-out; }
-      section.intro *:nth-child(4) {
-        -webkit-transform: rotate(-90deg) scaleX(-1);
-        -ms-transform: rotate(-90deg) scaleX(-1);
-        transform: rotate(-90deg) scaleX(-1); }
-      section.intro *:nth-child(6) {
-        -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        transform: rotate(90deg); }
-      section.intro *:nth-child(8) {
-        -webkit-transform: scaleY(-1);
-        -ms-transform: scaleY(-1);
-        transform: scaleY(-1); }
+    section.intro h1, section.intro h2, section.intro p {
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.7); }
+    section.intro h2:nth-child(4), section.intro p:nth-child(4) {
+      -webkit-transform: rotate(-90deg) scaleX(-1);
+      -ms-transform: rotate(-90deg) scaleX(-1);
+      transform: rotate(-90deg) scaleX(-1); }
+    section.intro h2:nth-child(6), section.intro p:nth-child(6) {
+      -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg); }
+    section.intro h2:nth-child(8), section.intro p:nth-child(8) {
+      -webkit-transform: scaleY(-1);
+      -ms-transform: scaleY(-1);
+      transform: scaleY(-1); }
     section.intro div {
       position: relative;
       display: flex;
       flex-direction: column;
       width: 100%;
       height: 100%; }
-      section.intro div h1 {
-        margin: auto;
-        line-height: .5; }
-        section.intro div h1:nth-child(2) {
-          -webkit-transform: scaleY(-1);
-          -ms-transform: scaleY(-1);
-          transform: scaleY(-1); }
+    section.intro h1 {
+      margin: auto; }
+      section.intro h1 span {
+        display: inline-block; }
+        section.intro h1 span:nth-child(1) {
+          font-family: "ChaneyUltra"; }
+        section.intro h1 span:nth-child(4) {
+          font-family: "ChaneyUltra"; }
+        section.intro h1 span:nth-child(5) {
+          font-family: "ChaneyWide"; }
     section.intro svg {
       width: 80%;
       height: 100%; }
@@ -182,21 +216,11 @@ section {
 
 h1, h2, h3 {
   position: relative;
+  font-family: "Chaney";
   line-height: 1; }
 
-h2, h3 {
-  font-family: "Rubik Mono One", sans-serif;
-  font-weight: 700; }
-
 h1 {
-  z-index: 10;
-  font-size: 26vmin;
-  font-family: "Rakkas", cursive;
-  font-weight: 400;
-  transition-property: transform;
-  transition-duration: 0.01s;
-  transition-delay: 0s;
-  transition-timing-function: linear; }
+  font-size: 20vmin; }
 
 h2 {
   font-size: 30px; }

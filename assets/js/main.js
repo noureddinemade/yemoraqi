@@ -18,9 +18,13 @@ document.addEventListener('mousemove', (e) => {
     let x = e.pageX;
     let y = e.pageY;
 
-    let spiralX = x / 10;
-    let spiralY = y / 10;
+    let spiralX = x / 2;
+    let spiralY = y / 2;
+
+    let textX = -x / 50;
+    let textY = -y / 50;
 
     moveObject(bgSpiral, spiralX, spiralY);
+    moveObject(mainText, textX, textY);
 
 });

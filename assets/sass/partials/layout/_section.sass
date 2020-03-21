@@ -29,6 +29,12 @@ section
 
             +transition(transform, 1s, 0s, ease-out)
 
+        h1, h2, p
+
+            text-shadow: 0 0 20px rgba($light, .7)
+
+        h2, p
+
             // Pseudo
 
             &:nth-child(4)
@@ -52,19 +58,29 @@ section
             width: 100%
             height: 100%
 
-            //
+        h1
 
-            h1
+            margin: auto
 
-                margin: auto
+            // Children
 
-                line-height: .5
+            span
 
-                // Pseudo
+                display: inline-block
 
-                &:nth-child(2)
+                // Pseudeo
 
-                    +transform(scaleY, -1)
+                &:nth-child(1)
+
+                    font-family: nth($fontHead, 4)
+
+                &:nth-child(4)
+
+                    font-family: nth($fontHead, 4)
+
+                &:nth-child(5)
+
+                    font-family: nth($fontHead, 2)
 
         svg
 
